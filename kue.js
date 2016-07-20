@@ -19,7 +19,7 @@ console.log("kueOptions: " + kueOptions);
 var jobs = kue.createQueue(kueOptions);
 
 // see https://github.com/learnBoost/kue/ for how to do more than one job at a time
-jobs.process('crawl', function(job, done) {
-  console.log(job.data);
-  done();
-});
+// jobs.process('crawl', function(job, done) {
+//   console.log(job.data);
+//   done();
+// });
