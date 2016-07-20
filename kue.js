@@ -6,6 +6,7 @@ var kue = require('kue')
 // (put REDISTOGO_URL=redis://localhost:6379 in .env for local testing)
 
 kue.redis.createClient = function() {
+    console.log("process.env.REDISTOGO_URL: " + process.env.REDISTOGO_URL);
     var redisUrl = url.parse(process.env.REDISTOGO_URL)
       , client = redis.createClient(redisUrl.port, redisUrl.hostname);
     if (redisUrl.auth) {
