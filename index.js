@@ -2,6 +2,9 @@
 // compatible API routes.
 
 var express = require('express');
+var kue = require('kue');
+var url = require('url');
+
 var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
 
@@ -54,3 +57,49 @@ httpServer.listen(port, function() {
 
 // This will enable the Live Query real-time server
 ParseServer.createLiveQueryServer(httpServer);
+
+kue.redis.createClient = function() {
+    var redisUrl = url.parse(process.env.REDISTOGO_URL)
+      , client = redis.createClient(redisUrl.port, redisUrl.hostname);
+    if (redisUrl.auth) {
+        client.auth(redisUrl.auth.split(":")[1]);
+    }
+    return client;
+};
+
+// then access the current Queue
+var jobs = kue.createQueue();
+
+app.get('/', function(req, res) {
+    
+    var job = jobs.create('crawl', {
+        url: 'http://github.com'
+    });
+
+    job.on('complete', function(){
+        // avoid sending data after the response has been closed
+        if (res.finished) {
+            console.log("Job complete");
+        } else {
+            res.send("Job complete");
+        }
+    }).on('failed', function(){
+        if (res.finished) {
+            console.log("Job failed");
+        } else {
+            res.send("Job failed");
+        }
+    }).on('progress', function(progress){
+        console.log('job #' + job.id + ' ' + progress + '% complete');
+    });
+    
+    job.save();
+
+    // timeout after 5s
+    setTimeout(function() {
+        res.send("OK (timed out)");
+    }, 5000);
+});
+
+// wire up Kue (see /active for queue interface)
+app.use(kue.app);
