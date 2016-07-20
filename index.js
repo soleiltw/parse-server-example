@@ -102,4 +102,4 @@ app.get('/', function(req, res) {
 });
 
 // wire up Kue (see /active for queue interface)
-app.use(kue.app);
+app.use("kue", kue.app);
