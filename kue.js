@@ -1,6 +1,6 @@
 var kue = require('kue')
   , url = require('url')
-  , redis = require('kue/node_modules/redis');
+  , redis = require("redis");
 
 // make sure we use the Heroku Redis To Go URL
 // (put REDISTOGO_URL=redis://localhost:6379 in .env for local testing)
