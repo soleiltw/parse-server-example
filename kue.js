@@ -11,9 +11,11 @@ if(process.env.REDISTOGO_URL) {
     };
     if(redisUrl.auth) {
         kueOptions.redis.auth = redisUrl.auth.split(':')[1];
+        console.log("Redis auth: " + kueOptions.redis.auth);
     }
 }
 
+console.log("kueOptions: " + kueOptions);
 var jobs = kue.createQueue(kueOptions);
 
 // see https://github.com/learnBoost/kue/ for how to do more than one job at a time
