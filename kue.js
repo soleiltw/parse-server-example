@@ -11,3 +11,5 @@ var tools = require('./cloud/tools');
 tools.foo()
 tools.bar()
 console.log(typeof tools.zemba);
+
+process.exit();
