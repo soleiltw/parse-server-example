@@ -30,3 +30,8 @@ function sayHello() {
 }
 
 sayHello();
+
+var tools = require('./cloud/tools');
+console.log(typeof tools.foo);
+console.log(typeof tools.bar);
+console.log(typeof tools.zemba);
