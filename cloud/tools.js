@@ -3,11 +3,13 @@
 module.exports = {
   foo: function () {
     // whatever
+    console.log("Called tools.foo() ");
   },
   bar: function () {
-    // whatever
+    console.log("Called tools.bar()");
   }
 };
 
 var zemba = function () {
+	console.log("Called tools.zemba");
 }

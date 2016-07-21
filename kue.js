@@ -1,37 +1,13 @@
 #!/usr/bin/env node
 
-var kue = require('kue'),
-  url = require('url');
-
-var kueOptions = {};
-
-if(process.env.REDISTOGO_URL) {
-    var redisUrl = url.parse(process.env.REDISTOGO_URL);
-    kueOptions.redis = {
-        port: parseInt(redisUrl.port),
-        host: redisUrl.hostname
-    };
-    if(redisUrl.auth) {
-        kueOptions.redis.auth = redisUrl.auth.split(':')[1];
-        console.log("Redis auth: " + kueOptions.redis.auth);
-    }
-}
-
-var jobs = kue.createQueue(kueOptions);
-
-// see https://github.com/learnBoost/kue/ for how to do more than one job at a time
-// jobs.process('crawl', function(job, done) {
-//   console.log(job.data);
-//   done();
-// });
-
+// Using Heroku Scheduler with Node.js http://stackoverflow.com/questions/13345664/using-heroku-scheduler-with-node-js
 function sayHello() {
 	console.log('Hello from kue.js');
 }
-
 sayHello();
 
+// An example for - In Node.js, how do I “include” functions from my other files? http://stackoverflow.com/questions/5797852/in-node-js-how-do-i-include-functions-from-my-other-files
 var tools = require('./cloud/tools');
-console.log("In kue.js, we called tools.foo: " + typeof tools.foo);
-console.log("In kue.js, we called tools.bar: " + typeof tools.bar);
-console.log("In kue.js, we called tools.zemba: " + typeof tools.zemba);
+tools.foo()
+tools.bar()
+console.log(typeof tools.zemba);
