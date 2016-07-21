@@ -32,6 +32,6 @@ function sayHello() {
 sayHello();
 
 var tools = require('./cloud/tools');
-console.log(typeof tools.foo);
-console.log(typeof tools.bar);
-console.log(typeof tools.zemba);
+console.log("In kue.js, we called tools.foo: " + typeof tools.foo);
+console.log("In kue.js, we called tools.bar: " + typeof tools.bar);
+console.log("In kue.js, we called tools.zemba: " + typeof tools.zemba);
