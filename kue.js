@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var kue = require('kue'),
   url = require('url');
 
@@ -22,3 +24,9 @@ var jobs = kue.createQueue(kueOptions);
 //   console.log(job.data);
 //   done();
 // });
+
+function sayHello() {
+	console.log('Hello from kue.js');
+}
+
+sayHello();
