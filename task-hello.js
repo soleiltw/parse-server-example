@@ -8,25 +8,16 @@ Parse.Cloud.useMasterKey();
 // Simple test for hello
 Parse.Cloud.run('hello', {}).then(function(result) {
     // make sure the set the enail sent flag on the object
-    console.log("result :" + JSON.stringify(result));
+    console.log("hello result :" + JSON.stringify(result));
 }, function(error) {
     // error
     console.log("error: "+error);
 });
 
 // Check and log object
-var beaconSpot = Parse.Object.extend("BeaconSpot");
-var query = new Parse.Query(beaconSpot);
-query.find({
-	success: function(result) {
-		console.log("Successfully retrieved " + results.length + " beacon spot.");
-		
-		for (var i = 0; i < results.length; i++) {
-			var object = results[i];
-			console.log(object.id + ' - ' + object.get('name'));
-    	}
-		
-	}, error: function(error) {
-		console.log("error: "+error);
-	}
+Parse.Cloud.run('QueryBeaconSpot', {}).then(function(result) {
+    console.log("QueryBeaconSpot result :" + JSON.stringify(result));
+}, function(error) {
+    // error
+    console.log("error: "+error);
 });
