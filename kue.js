@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-var main = require('./cloud/main');
 var Parse = require('parse').Parse;
+var main = require('./cloud/main');
 
 function pushToCaretaker() {
 	var startDate = new Date();
