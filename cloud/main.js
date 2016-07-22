@@ -18,7 +18,7 @@ Parse.Cloud.define('queryBeaconSpot', function(req, res){
 		
 		}, function(error) {
 			console.log("error: "+error);
-			res.error(error);
+			res.send(500, error);
 	});
 });
 
