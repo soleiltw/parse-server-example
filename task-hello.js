@@ -3,11 +3,13 @@
 var kue = require('kue')
 	, queue = kue.createQueue();
 	
+console.log("Queue start processing.");
 queue.process('say hello', function(job, done) {
 	// Start coding
 	sayHello()
 	
 	done();
+	process.exit();
 });
 
 function sayHello() {
