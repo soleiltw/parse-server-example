@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var kue = requrire('kue')
+var kue = require('kue')
 	, queue = kue.createQueue();
 	
 queue.process('say hello', function(job, done) {
