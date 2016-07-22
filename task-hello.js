@@ -14,9 +14,17 @@ Parse.Cloud.run('hello', {}).then(function(result) {
     console.log("error: "+error);
 });
 
+// Get total object
+Parse.Cloud.run('getTotalBeaconSpot', {}).then(function(result) {
+    console.log("getTotalBeaconSpot result :" + JSON.stringify(result));
+}, function(error) {
+    // error
+    console.log("error: "+error);
+});
+
 // Check and log object
-Parse.Cloud.run('QueryBeaconSpot', {}).then(function(result) {
-    console.log("QueryBeaconSpot result :" + JSON.stringify(result));
+Parse.Cloud.run('queryBeaconSpot', {}).then(function(result) {
+    console.log("queryBeaconSpot result :" + JSON.stringify(result));
 }, function(error) {
     // error
     console.log("error: "+error);
