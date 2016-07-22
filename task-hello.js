@@ -10,8 +10,6 @@ queue.process('say hello', function(job, done) {
 	done();
 });
 
-process.exit();
-
 function sayHello() {
 	var startDate = new Date();
 	startDate.setMinutes(startDate.getMinutes() - 31 );
