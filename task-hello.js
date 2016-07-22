@@ -15,7 +15,7 @@ Parse.Cloud.run('hello', {}).then(function(result) {
 });
 
 // Check and log object
-var beaconSpot = Parse.Object.extent("BeaconSpot");
+var beaconSpot = Parse.Object.extend("BeaconSpot");
 var query = new Parse.Query(beaconSpot);
 query.find({
 	success: function(result) {
