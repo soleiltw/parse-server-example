@@ -14,12 +14,12 @@ Parse.Cloud.define('queryBeaconSpot', function(request, response){
 				var object = results[i];
 				console.log(object.id + ' - ' + object.get('name'));
     		}
-			request.success('QueryBeaconSpot success.');
+			response.success('QueryBeaconSpot success.');
 		
 		}, function(error) {
 			
 			console.log("error: "+error);
-			request.error("error: "+error.code + " " + error.message);
+			response.error("error: "+error.code + " " + error.message);
 		}
 	);
 });
