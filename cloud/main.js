@@ -5,10 +5,9 @@ Parse.Cloud.define('hello', function(req, res) {
 
 Parse.Cloud.define('queryBeaconSpot', function(req, res){
 
-	Parse.Cloud.useMasterKey();
 	var query = new Parse.Query('BeaconSpot');
-	query.find().then(
-		function(result) {
+	query.find(
+		success: function(results){
 			console.log("Successfully retrieved " + results.length + " beacon spot.");
 		
 			for (var i = 0; i < results.length; i++) {
@@ -17,7 +16,7 @@ Parse.Cloud.define('queryBeaconSpot', function(req, res){
     		}
 			res.success('QueryBeaconSpot success.');
 		
-		}, function(error) {
+		}, error: function(error) {
 			console.log("error: "+error);
 			res.error("error: "+error.code + " " + error.message);
 	});
