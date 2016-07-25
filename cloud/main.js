@@ -6,7 +6,7 @@ Parse.Cloud.define('hello', function(req, res) {
 Parse.Cloud.define('queryBeaconSpot', function(request, response){
 
 	var query = new Parse.Query('BeaconSpot');
-	query.find().then( function(results) {
+	query.find({ useMasterKey: true }).then( function(results) {
 		
 			console.log("Successfully retrieved " + results.length + " beacon spot.");
 		
