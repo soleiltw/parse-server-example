@@ -3,24 +3,25 @@ Parse.Cloud.define('hello', function(req, res) {
   res.success('Hi from heroku.');
 });
 
-Parse.Cloud.define('queryBeaconSpot', function(req, res){
+Parse.Cloud.define('queryBeaconSpot', function(request, response){
 
 	var query = new Parse.Query('BeaconSpot');
-	query.find({
-		function(results){
+	query.find().then( function(results) {
+		
 			console.log("Successfully retrieved " + results.length + " beacon spot.");
 		
 			for (var i = 0; i < results.length; i++) {
 				var object = results[i];
 				console.log(object.id + ' - ' + object.get('name'));
     		}
-			res.success('QueryBeaconSpot success.');
+			request.success('QueryBeaconSpot success.');
 		
 		}, function(error) {
+			
 			console.log("error: "+error);
-			res.error("error: "+error.code + " " + error.message);
+			request.error("error: "+error.code + " " + error.message);
 		}
-	});
+	);
 });
 
 Parse.Cloud.define('getTotalBeaconSpot', function(request, response) {
