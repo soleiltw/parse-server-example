@@ -12,7 +12,9 @@ Parse.Cloud.define('queryBeaconSpot', function(request, response){
 		
 			for (var i = 0; i < results.length; i++) {
 				var object = results[i];
-				console.log(object.id + ' - ' + object.get('name'));
+				
+				// As we probe before, this work on iOS parse function call.
+				// console.log(object.id + ' - ' + object.get('name'));
     		}
 			response.success('QueryBeaconSpot success.');
 		
