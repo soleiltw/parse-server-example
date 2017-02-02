@@ -31,11 +31,14 @@ Parse.Cloud.define("sendPushToUser", function(request, response) {
       alert: message,
       title: title,
       activity: activity
-    },
-    useMasterKey: true
-  }).then(function() {
-      response.success("Push was sent successfully.")
-  }, function(error) {
-      response.error("Push failed to send with error: " + error.message);
+    }
+  }, {
+  	useMasterKey: true,
+        success: function () {
+            response.success("Push was sent successfully.")
+        },
+        error: function (error) {
+            response.error("Push failed to send with error: " + error.message);
+        }
   });
 });
