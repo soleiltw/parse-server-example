@@ -42,3 +42,28 @@ Parse.Cloud.define("sendPushToUser", function(request, response) {
         }
   });
 });
+
+Parse.Cloud.job("deleteEmptyUserPointerInstallation", function(request, response) {
+    var installationQuery = new Parse.Query(Parse.Installation);
+    installationQuery.doesNotExist("userPointer");
+    installationQuery.find({
+      useMasterKey: true,
+        success: function(results) {
+            if (results != nil) {
+            console.log("Total: "+ results.length)
+            console.log("Installation objects: "+ results)
+            Parse.Object.destroyAll(results, {useMasterKey: true}).then(
+              function(success) {
+              // All the objects were deleted
+                console.log("Installation object deleted.")
+              }, function(error) {
+              console.error("Oops! Something went wrong: " + error.message + " (" + error.code + ")");
+              });
+            }
+            response.success("Installation Query completed successfully.");
+        },
+        error: function(error) {
+            response.error("Error, something went wrong. " + error.code + " - " + error.message);
+        }
+    });
+});
