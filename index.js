@@ -24,15 +24,15 @@ var api = new ParseServer({
     android: {
       senderId: process.env.ANDROID_SENDERID || '', // The sender id of GCM
       apiKey: process.env.ANDROID_APIKEY || '' // The Server API Key of GCM
-    }
-
-    // ios: {
-    //   pfx: 'certs/mycert.p12', // the path and filename to the .p12 file you exported earlier. 
-    //   cert: '', // If not using the .p12 format, the path to the certificate PEM to load from disk
-    //   bundleId: '', // The bundle identifier associated with your app
-    //   key: '', // If not using the .p12 format, the path to the private key PEM to load from disk
-    //   production: true // Specifies which environment to connect to: Production (if true) or Sandbox
-    // }
+    }, ios: [{
+      pfx: 'certs/APNs-Development-iOS-Alittle50.p12', // the path and filename to the .p12 file you exported earlier. 
+      bundleId: 'tw.com.nahoo.app.alittle50', // The bundle identifier associated with your app
+      production: false // Specifies which environment to connect to: Production (if true) or Sandbox
+    }, {
+      pfx: 'certs/Apple-Push-Services-Alittle50.p12',
+      bundleId: 'tw.com.nahoo.app.alittle50', // The bundle identifier associated with your app
+      production: true // Specifies which environment to connect to: Production (if true) or Sandbox
+    }]
   }
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
