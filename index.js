@@ -26,11 +26,11 @@ var api = new ParseServer({
       apiKey: process.env.ANDROID_APIKEY || '' // The Server API Key of GCM
     }, ios: [{
       pfx: 'certs/APNs-Development-iOS-Alittle50.p12', // the path and filename to the .p12 file you exported earlier. 
-      bundleId: 'tw.com.nahoo.app.alittle50', // The bundle identifier associated with your app
+      bundleId: 'com.nahoo.app.alittle50', // The bundle identifier associated with your app
       production: false // Specifies which environment to connect to: Production (if true) or Sandbox
     }, {
       pfx: 'certs/Apple-Push-Services-Alittle50.p12',
-      bundleId: 'tw.com.nahoo.app.alittle50', // The bundle identifier associated with your app
+      bundleId: 'com.nahoo.app.alittle50', // The bundle identifier associated with your app
       production: true // Specifies which environment to connect to: Production (if true) or Sandbox
     }]
   }
