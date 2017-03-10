@@ -25,6 +25,14 @@ var api = new ParseServer({
       senderId: process.env.ANDROID_SENDERID || '', // The sender id of GCM
       apiKey: process.env.ANDROID_APIKEY || '' // The Server API Key of GCM
     }
+
+    // ios: {
+    //   pfx: 'certs/mycert.p12', // the path and filename to the .p12 file you exported earlier. 
+    //   cert: '', // If not using the .p12 format, the path to the certificate PEM to load from disk
+    //   bundleId: '', // The bundle identifier associated with your app
+    //   key: '', // If not using the .p12 format, the path to the private key PEM to load from disk
+    //   production: true // Specifies which environment to connect to: Production (if true) or Sandbox
+    // }
   }
 });
 // Client-keys like the javascript key or the .NET key are not necessary with parse-server
