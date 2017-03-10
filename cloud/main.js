@@ -27,16 +27,19 @@ Parse.Cloud.define("sendPushToUser", function(request, response) {
     pushQuery.matchesQuery("userPointer", userQuery);
     // Send the push notification to results of the query
     Parse.Push.send({
-        where: pushQuery,
-        data: {
-          alert: message,
-          title: title,
-          sound: sound
+    where: pushQuery,
+    data: {
+      alert: message,
+      title: title,
+      activity: activity
+    }
+    }, {
+    useMasterKey: true,
+        success: function () {
+            response.success("Push was sent successfully.")
+        },
+        error: function (error) {
+            response.error("Push failed to send with error: " + error.message);
         }
-    }).then(function() {
-      // Check if push query
-        response.success("Push success.");
-    }, function(error) {
-        response.error("Push failed to send with error: " + error.message);
     });
 });
