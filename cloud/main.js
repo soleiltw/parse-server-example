@@ -27,12 +27,12 @@ Parse.Cloud.define("sendPushToUser", function(request, response) {
     pushQuery.matchesQuery("userPointer", userQuery);
     // Send the push notification to results of the query
     Parse.Push.send({
-    where: pushQuery,
-    data: {
+     where: pushQuery,
+     data: {
       alert: message,
       title: title,
-      activity: activity
-    }
+      sound: sound
+        }
     }, {
     useMasterKey: true,
         success: function () {
