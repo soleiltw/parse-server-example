@@ -26,12 +26,12 @@ var api = new ParseServer({
       apiKey: process.env.ANDROID_APIKEY || '' // The Server API Key of GCM
     }, 
     ios: [{
-      pfx: 'cert/ItaowayDevCertificates.p12', // the path and filename to the .p12 file you exported earlier. 
-      bundleId: 'tw.org.efarm.itaoway', // The bundle identifier associated with your app
+      pfx: 'cert/CIXDevCertificates.p12', // the path and filename to the .p12 file you exported earlier. 
+      bundleId: 'tw.com.dynasafe.cix', // The bundle identifier associated with your app
       production: false // Specifies which environment to connect to: Production (if true) or Sandbox
     }, {
-      pfx: 'cert/ItaowayDistCertificates.p12', // the path and filename to the .p12 file you exported earlier. 
-      bundleId: 'tw.org.efarm.itaoway', // The bundle identifier associated with your app
+      pfx: 'cert/CIXDistCertificates.p12', // the path and filename to the .p12 file you exported earlier. 
+      bundleId: 'tw.com.dynasafe.cix', // The bundle identifier associated with your app
       production: true // Specifies which environment to connect to: Production (if true) or Sandbox
     }]
   }
