@@ -43,3 +43,21 @@ Parse.Cloud.define("sendPushToUser", function(request, response) {
         }
     });
 });
+
+Parse.Cloud.define("setDeviceToken", function(request, response) {
+    var installationId = request.params.installationId;
+    var deviceToken = request.params.deviceToken;
+
+    var query = new Parse.Query(Parse.Installation);
+    query.get(installationId, {useMasterKey: true}).then(function(installation) {
+        console.log(installation);
+        installation.set("deviceToken", deviceToken);
+        installation.save(null, {useMasterKey: true}).then(function() {
+            response.success(true);
+        }, function(error) {
+            response.error(error);
+        })
+    }, function (error) {
+        console.log(error);
+    })
+});
